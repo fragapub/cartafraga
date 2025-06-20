@@ -1,11 +1,14 @@
 :root {
-    --gold: #D4AF37;
-    --dark-bg: #121212;
-    --light-bg: #222;
-    --text-color: #f0f0f0;
-    --font-title: 'Cinzel', serif;
+    --gold: #EACD84; /* Un tono dorado más cercano al del PDF */
+    --dark-bg: #0A0A0A; /* Negro profundo como el fondo del PDF */
+    --card-bg: #141414; /* Un gris muy oscuro para las tarjetas */
+    --text-color: #E0E0E0;
+    --font-title: 'Cinzel Decorative', cursive; /* Fuente ornamental que evoca el logo */
     --font-body: 'Lato', sans-serif;
 }
+
+/* Importar la fuente especial para los títulos */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Lato:wght@300;400;700&display=swap');
 
 * {
     margin: 0;
@@ -21,38 +24,53 @@ body {
     background-color: var(--dark-bg);
     color: var(--text-color);
     font-family: var(--font-body);
+    /* Fondo con la flor del PDF */
+    background-image: linear-gradient(rgba(10, 10, 10, 0.96), rgba(10, 10, 10, 0.98)), url(https://i.imgur.com/r3fFCkR.png);
+    background-attachment: fixed;
+    background-position: top right;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
+/* --- Encabezado y Leyenda --- */
 .hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('https://i.imgur.com/KVb6s2p.jpeg') center center/cover no-repeat;
     text-align: center;
-    padding: 100px 20px 50px;
-    animation: fadeIn 2s ease-in-out;
+    padding: 80px 20px 50px;
+    background: transparent; /* Quitamos el fondo para ver el de la página */
 }
 
 .main-title {
     font-family: var(--font-title);
-    font-size: 4rem;
+    font-size: 4.5rem;
     color: var(--gold);
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-    letter-spacing: 5px;
+    text-shadow: 0 0 15px rgba(234, 205, 132, 0.4);
+    letter-spacing: 3px;
+    animation: fadeIn 2s;
 }
 
 .subtitle {
-    font-size: 1.2rem;
-    color: #ccc;
+    font-size: 1rem;
+    color: #aaa;
     margin-bottom: 30px;
+    font-weight: 300;
+    letter-spacing: 4px;
+    text-transform: uppercase;
 }
 
 .legend {
-    max-width: 800px;
+    max-width: 700px;
     margin: 0 auto;
     font-size: 1rem;
-    line-height: 1.6;
-    color: #ddd;
+    line-height: 1.7;
+    color: #ccc;
     font-style: italic;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid rgba(234, 205, 132, 0.2);
 }
 
+/* --- Navegación del Menú --- */
 .container {
     width: 90%;
     max-width: 1200px;
@@ -64,20 +82,22 @@ body {
     justify-content: center;
     flex-wrap: wrap;
     gap: 15px;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
     position: sticky;
-    top: 0;
-    background-color: rgba(18, 18, 18, 0.9);
+    top: 10px;
+    background-color: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(10px);
     padding: 15px;
     z-index: 1000;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    border: 1px solid rgba(234, 205, 132, 0.3);
 }
 
 .menu-nav a {
     color: var(--gold);
     text-decoration: none;
-    font-family: var(--font-title);
+    font-family: 'Cinzel', serif; /* Una variante más legible para la nav */
     font-weight: 700;
     padding: 10px 20px;
     border: 1px solid var(--gold);
@@ -88,110 +108,90 @@ body {
 .menu-nav a:hover {
     background-color: var(--gold);
     color: var(--dark-bg);
-    transform: translateY(-3px);
+    box-shadow: 0 0 10px rgba(234, 205, 132, 0.5);
 }
 
+/* --- Secciones y Items del Menú --- */
 .menu-section {
-    background-color: var(--light-bg);
-    padding: 40px;
-    margin-bottom: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    animation: slideUp 0.8s ease-out;
+    background: transparent;
+    padding: 20px 0;
+    margin-bottom: 50px;
+    animation: slideUp 1s ease-out;
 }
 
 .menu-section h2 {
     font-family: var(--font-title);
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     color: var(--gold);
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(234, 205, 132, 0.3);
 }
 
 .section-note {
     text-align: center;
     color: #aaa;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     font-style: italic;
 }
 
 .menu-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 30px;
 }
 
 .menu-item {
-    background: var(--dark-bg);
-    padding: 20px;
+    background: var(--card-bg);
+    padding: 25px;
     border-radius: 6px;
-    border-left: 4px solid var(--gold);
+    border: 1px solid rgba(234, 205, 132, 0.2);
+    display: flex;
+    flex-direction: column;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .menu-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.2);
+    transform: scale(1.03);
+    box-shadow: 0 0 20px rgba(234, 205, 132, 0.2);
 }
 
 .menu-item h3 {
     color: var(--gold);
     margin-bottom: 10px;
     font-size: 1.3rem;
+    font-family: 'Cinzel', serif;
 }
 
 .menu-item p {
     color: #ccc;
     font-size: 0.95rem;
-    line-height: 1.5;
+    line-height: 1.6;
     margin-bottom: 15px;
+    flex-grow: 1;
 }
 
 .menu-item span {
     font-weight: bold;
     color: var(--text-color);
     font-size: 1.2rem;
-    display: block;
     text-align: right;
+    margin-top: auto;
 }
 
-.destilados-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-}
-
-.destilado-categoria h3 {
-    font-family: var(--font-title);
-    color: var(--gold);
-    border-bottom: 2px solid var(--gold);
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-}
-
-.destilado-categoria .menu-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-}
-
-.destilado-categoria .menu-item span:first-child {
-    text-align: left;
-    font-weight: normal;
-    font-size: 1rem;
-    color: #ccc;
-}
-
+/* --- Footer --- */
 footer {
     text-align: center;
-    padding: 20px;
+    padding: 30px;
     margin-top: 40px;
-    color: #aaa;
-    border-top: 1px solid #333;
+    color: #777;
+    font-size: 0.9rem;
+    background-color: #0A0A0A;
+    border-top: 1px solid rgba(234, 205, 132, 0.2);
 }
 
-/* Animaciones */
+/* --- Animaciones --- */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -202,20 +202,18 @@ footer {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive */
+/* --- Ajustes para Móviles --- */
 @media (max-width: 768px) {
+    body {
+        background-size: cover; /* Ajusta la imagen de fondo en móvil */
+    }
     .main-title {
         font-size: 3rem;
     }
-    .menu-nav {
-        padding: 10px;
-        gap: 10px;
+    .menu-section h2 {
+        font-size: 2.2rem;
     }
-    .menu-nav a {
-        padding: 8px 15px;
-        font-size: 0.9rem;
-    }
-    .menu-section {
-        padding: 25px;
+    .menu-grid {
+        grid-template-columns: 1fr;
     }
 }
